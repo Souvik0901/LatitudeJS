@@ -31,7 +31,7 @@ body = template.Template_Text__c;
 // Insert the new SMS record into the SMSModel
 smsList.updateRow(smsList.createRow(), {
     genesis__Application__c:appId, 
-    Body__c: template.Template_Text__c, 
+    Body__c: body,
     From__c: 'Latitude',  
     To__c: app.Mobile_Number__c, 
     Template_Type__c:smsType,  
