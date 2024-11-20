@@ -1,10 +1,12 @@
 var $ = skuid.$;
-var conditionList = skuid.model.getModel('Conditions');
-var applicationList = skuid.model.getModel('Application');
+var conditionList = skuid.model.getModel('Conditions'); // templates
+var applicationList = skuid.model.getModel('Application'); 
 var brokerUserList = skuid.model.getModel('BrokerUser');
-var taskList = skuid.model.getModel('Task');
+var taskList = skuid.model.getModel('Task');    //smsmodel
+
 var app = applicationList.data[0];
 var broker = brokerUserList.data[0];
+
 var appId = app.Id;
 var brokerId = broker.Id;
 
@@ -36,4 +38,13 @@ var mergefield1 = condition.Input_field_1__c;
 var mergefield2 = condition.Input_field_2__c;
 var subjectLine = subject.replace(mergefield1, data1);
 subjectLine = subjectLine.replace(mergefield2, data2);
-taskList.updateRow(taskList.createRow(),{OwnerId:brokerId, genesis__Application__c:appId, Subject:subjectLine, Priority:'Normal', whatId:appId, Approval_Task__c:true,Task_Type__c:taskType});
+
+taskList.updateRow(taskList.createRow(),{
+    OwnerId:brokerId,
+    genesis__Application__c:appId, 
+    Subject:subjectLine, 
+    Priority:'Normal', 
+    whatId:appId, 
+    Approval_Task__c:true,
+    Task_Type__c:taskType
+});
