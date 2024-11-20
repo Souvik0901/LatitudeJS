@@ -21,13 +21,13 @@ template = templateList.data[0];
 body = template.Template_Text__c; 
 
 // Prepare a new SMS record to insert into SMSModel
-var smsRecord = {
-    Body__c: template.Template_Text__c, 
-    From__c: 'Latitude',  
-    To__c: app.Mobile_Number__c, 
-    Template_Type__c:smsType,  
-    isUpdated: 'No', 
-};
+// var smsRecord = {
+//     Body__c: template.Template_Text__c, 
+//     From__c: 'Latitude',  
+//     To__c: app.Mobile_Number__c, 
+//     Template_Type__c:smsType,  
+//     isUpdated: 'No', 
+// };
 
 // Insert the new SMS record into the SMSModel
 smsList.updateRow(smsList.createRow(), {
