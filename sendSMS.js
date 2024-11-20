@@ -17,7 +17,6 @@ for(let i=0; i<3; i++){
 }
 
 
-template = templateList.data[0]; 
 body = template.Template_Text__c; 
 
 // Prepare a new SMS record to insert into SMSModel
@@ -31,6 +30,7 @@ body = template.Template_Text__c;
 
 // Insert the new SMS record into the SMSModel
 smsList.updateRow(smsList.createRow(), {
+    genesis__Application__c:appId, 
     Body__c: template.Template_Text__c, 
     From__c: 'Latitude',  
     To__c: app.Mobile_Number__c, 
