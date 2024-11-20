@@ -1,3 +1,6 @@
+
+// on preview SMS List and Template list are showing
+
 var $ = skuid.$;
 var templateList = skuid.model.getModel('Templates');
 var applicationList = skuid.model.getModel('Applications'); 
