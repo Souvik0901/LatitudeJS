@@ -38,3 +38,10 @@ if((applicationData.Top_Up__c === true )
     && ((applicationData.CL_Contract__r.loan__Pay_Off_Amount_As_Of_Today__c + applicationData.Top_Up_Amount__c) < 5000) ){
         return displayMessage('The total loan amount (excluding the Loan Establishment Fee) must be at least $5,000. Please adjust the top-up amount if you wish to proceed.', 'ERROR');
 }
+
+
+
+/////////////// FOR LMAU-3278 //////////////////
+if(applicationData.genesis__Loan_Amount__c >0 && applicationData.broker_fee__c >650){
+    return displayMessage('Hereeee we go', 'ERROR');
+}
