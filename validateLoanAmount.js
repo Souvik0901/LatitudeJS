@@ -64,3 +64,80 @@ if((applicationData.genesis__Loan_Amount__c <=50000 && applicationData.genesis__
 if(applicationData.genesis__Loan_Amount__c >=50000 && applicationData.broker_fee__c >2500){
     return displayMessage('The Broker fee cannot exceed $2500 for Loan amounts greater than or equal to $50,000', 'ERROR');
 }
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+// For New Application
+if (applicationData.Top_Up__c !== true && 
+    applicationData.Sales_Channel__c === 'Broker' && 
+    (applicationData.genesis__CL_Product_Name__c === 'Personal Loan Variable Rate' || 
+     applicationData.genesis__CL_Product_Name__c === 'Personal Loan Fixed Rate')) {
+
+    const loanAmount = applicationData.genesis__Loan_Amount__c;
+    const brokerFee = applicationData.broker_fee__c;
+
+    if (loanAmount <= 4999.99 && brokerFee > 0) {
+        return displayMessage('The Broker Fee cannot exceed $0 for loan amounts $4,999 or less', 'ERROR');
+    }
+
+    if (loanAmount >= 5000 && loanAmount <= 7499.99 && brokerFee > 200) {
+        return displayMessage('The Broker Fee cannot exceed $200 for loan amounts between $5,000-$7,499.99', 'ERROR');
+    }
+
+    if (loanAmount >= 7500 && loanAmount <= 9999.99 && brokerFee > 650) {
+        return displayMessage('The Broker Fee cannot exceed $650 for loan amounts between $7,500-$9,999.99', 'ERROR');
+    }
+
+    if (loanAmount >= 10000 && loanAmount <= 19999.99 && brokerFee > 990) {
+        return displayMessage('The Broker Fee cannot exceed $990 for loan amounts between $10,000-$19,999.99', 'ERROR');
+    }
+
+    if (loanAmount >= 20000 && loanAmount <= 49999.99 && brokerFee > 2200) {
+        return displayMessage('The Broker Fee cannot exceed $2,200 for loan amounts between $20,000-$49,999.99', 'ERROR');
+    }
+
+    if (loanAmount >= 50000 && brokerFee > 2500) {
+        return displayMessage('The Broker Fee cannot exceed $2,500 for loan amounts greater than or equal to $50,000', 'ERROR');
+    }
+}
+
+// For Motor Application
+if (applicationData.Top_Up__c !== true && 
+    applicationData.Sales_Channel__c === 'Broker' && 
+    (applicationData.genesis__CL_Product_Name__c === 'Motor Loan Variable Rate' || 
+     applicationData.genesis__CL_Product_Name__c === 'Motor Loan Fixed Rate')) {
+
+    const loanAmount = applicationData.Total_Loan_Amount__c;
+    const brokerFee = applicationData.broker_fee__c;
+
+    if (loanAmount <= 4999.99 && brokerFee > 0) {
+        return displayMessage('The Broker Fee cannot exceed $0 for loan amounts $4,999 or less', 'ERROR');
+    }
+
+    if (loanAmount >= 5000 && loanAmount <= 7499.99 && brokerFee > 200) {
+        return displayMessage('The Broker Fee cannot exceed $200 for loan amounts between $5,000-$7,499.99', 'ERROR');
+    }
+
+    if (loanAmount >= 7500 && loanAmount <= 9999.99 && brokerFee > 650) {
+        return displayMessage('The Broker Fee cannot exceed $650 for loan amounts between $7,500-$9,999.99', 'ERROR');
+    }
+
+    if (loanAmount >= 10000 && loanAmount <= 19999.99 && brokerFee > 990) {
+        return displayMessage('The Broker Fee cannot exceed $990 for loan amounts between $10,000-$19,999.99', 'ERROR');
+    }
+
+    if (loanAmount >= 20000 && loanAmount <= 49999.99 && brokerFee > 2200) {
+        return displayMessage('The Broker Fee cannot exceed $2,200 for loan amounts between $20,000-$49,999.99', 'ERROR');
+    }
+
+    if (loanAmount >= 50000 && brokerFee > 2500) {
+        return displayMessage('The Broker Fee cannot exceed $2,500 for loan amounts greater than or equal to $50,000', 'ERROR');
+    }
+}
+
+
+
+
+
+
